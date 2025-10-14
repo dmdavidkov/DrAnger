@@ -235,7 +235,7 @@
                 </div>
                 <div>
                     <a href="#waitlist" class="gradient-accent text-white font-semibold py-2 px-3 md:px-5 text-sm md:text-base rounded-lg shadow-md transition duration-300 ease-in-out gradient-accent-hover cta-button-hover">
-                        Присъедини се към списъка
+                        Присъедини се
                     </a>
                 </div>
             </div>
@@ -244,46 +244,59 @@
 
     <section id="hero" class="bg-gray-900 pt-16 pb-16 md:pt-32 md:pb-28 overflow-hidden">
         <div class="max-w-4xl mx-auto px-4">
+            <div class="inline-block bg-red-500/10 border border-red-500/30 rounded-full px-4 py-2 mb-6" data-aos="fade-up" data-aos-duration="600">
+                <span class="text-red-400 text-xs md:text-sm font-semibold uppercase tracking-wide">Скоро достъпно</span>
+            </div>
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 leading-tight text-center" data-aos="fade-up" data-aos-duration="800">
-                Излей <span class="text-red-500">гнева</span> си. Очаквай старта.
+                Излей <span class="text-red-500">гнева</span> си.<br/>Безопасно. Анонимно.
             </h1>
-            <p class="text-base md:text-xl text-gray-300 mb-8 md:max-w-2xl md:mx-auto leading-relaxed text-left md:text-center" data-aos="fade-up" data-aos-delay="150">
-                "Доктор Гняв" е в разработка – персонализирано пространство, където подготвени специалисти ще ти помогнат да освободиш натрупаното напрежение и да стигнеш до вътрешно спокойствие. Влез в списъка с ранни потребители и получи известие при старта.
+            <p class="text-base md:text-xl text-gray-300 mb-8 md:max-w-2xl md:mx-auto leading-relaxed text-center" data-aos="fade-up" data-aos-delay="150">
+                Революционна услуга за емоционално освобождаване. Изживей контролиран разговор с обучен специалист и освободи натрупаното напрежение без последствия.
             </p>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                <form class="waitlist-form max-w-xl mx-auto" novalidate>
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-2 bg-gray-800/60 rounded-lg p-3 sm:p-2 border border-gray-700">
-                        <input type="email" name="email" required placeholder="Въведи своя имейл" class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Имейл за ранно известяване">
-                        <button type="submit" class="gradient-accent text-white font-semibold px-4 py-3 rounded-md shadow-md cta-button-hover gradient-accent-hover">Влез в листа на очакване</button>
-                    </div>
-                    <p class="waitlist-confirmation hidden text-green-400 text-sm mt-3" role="status" aria-live="polite">Благодарим! Ще те известим веднага щом услугата стартира.</p>
-                </form>
-                <p class="text-xs text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="400">Обещаваме да пишем само при важни новости и няма да споделяме данните ти.</p>
+            <div class="text-center">
+                <div class="max-w-md mx-auto" data-aos="fade-up" data-aos-delay="300">
+                    <form id="waitlist-form-hero" class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            type="email" 
+                            id="email-hero"
+                            placeholder="твоят@имейл.bg" 
+                            required
+                            class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/50 transition"
+                        />
+                        <button 
+                            type="submit"
+                            class="gradient-accent text-white text-base font-semibold py-3 px-6 rounded-lg shadow-lg cta-button-hover whitespace-nowrap"
+                        >
+                            Искам достъп
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="400">Бъди първи, който ще опита Доктор Гняв. Без спам, обещаваме.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="problem" class="bg-gray-800">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 text-center" data-aos="fade-up">Напрежението те задушава?</h2>
-            <p class="text-base md:text-lg text-gray-300 mb-10 md:max-w-3xl md:mx-auto leading-relaxed text-left md:text-center" data-aos="fade-up" data-aos-delay="100">
-                Всекидневието ни залива със стрес – от шефа, трафика, връзките, живота. Потиснатият гняв води до тревожност, избухливост и бърнаут. Често няма бърз и достъпен начин да се справим.
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 text-center" data-aos="fade-up">Защо потиснатият гняв е проблем?</h2>
+            <p class="text-base md:text-lg text-gray-300 mb-10 md:max-w-3xl md:mx-auto leading-relaxed text-center" data-aos="fade-up" data-aos-delay="100">
+                Всекидневният стрес се натрупва незабелязано. Потиснатият гняв води до тревожност, избухливост и емоционално изтощение. Хората се нуждаят от безопасен начин да изразят емоциите си без последствия.
             </p>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-right" data-aos-delay="200">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-right" data-aos-delay="200">
                     <i class="fas fa-briefcase feature-icon text-red-500"></i>
-                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Стрес на работното място</h3>
-                    <p class="text-sm md:text-base text-gray-400">Неразбран шеф, токсични колеги, непосилни задачи?</p>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Професионален стрес</h3>
+                    <p class="text-sm md:text-base text-gray-400">Конфликти с колеги, неразбиращ шеф или непосилни изисквания създават хронично напрежение.</p>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-users feature-icon text-red-500"></i>
-                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Конфликти във връзките</h3>
-                    <p class="text-sm md:text-base text-gray-400">Неразбирателство с партньор, семейство или приятели?</p>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Лични отношения</h3>
+                    <p class="text-sm md:text-base text-gray-400">Неизказаното недоволство във връзките натрупва напрежение и разрушава комуникацията.</p>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-left" data-aos-delay="400">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-left" data-aos-delay="400">
                     <i class="fas fa-bolt feature-icon text-red-500"></i>
-                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Ежедневно напрежение</h3>
-                    <p class="text-sm md:text-base text-gray-400">Разочарования, задръствания, несправедливост – всичко се натрупва.</p>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Ежедневни фрустрации</h3>
+                    <p class="text-sm md:text-base text-gray-400">Малките ежедневни разочарования се натрупват и превръщат в емоционална бомба.</p>
                 </div>
             </div>
         </div>
@@ -292,30 +305,30 @@
     <section id="solution" class="bg-gray-900">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8 md:gap-12">
             <div class="md:w-1/2" data-aos="fade-right">
-                <span class="text-xs md:text-sm font-semibold text-red-500 uppercase tracking-wider block text-left">Решението</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4 md:mb-6 text-left md:text-left">Представяме ти Доктор Гняв</h2>
+                <span class="text-xs md:text-sm font-semibold text-red-500 uppercase tracking-wider block text-left">Иновативно решение</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4 md:mb-6 text-left md:text-left">Какво е Доктор Гняв?</h2>
                 <p class="text-base md:text-lg text-gray-300 mb-3 md:mb-4 leading-relaxed">
-                    Работим върху уникална услуга, която създадохме, за да ти помогнем да изпуснеш парата по контролиран и здравословен начин. "Доктор Гняв" не е терапия, а личният ти, анонимен "вентил" за гняв.
+                    Уникална дигитална услуга за емоционално освобождаване. Не сме терапия - ние сме твоят личен, анонимен "вентил" за момента, когато напрежението става непоносимо.
                 </p>
                 <p class="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
-                    Подготвяме симулиран разговор с обучен специализиран екип ("дразнител"), който първо отключва емоцията, а след това те води към успокоение и яснота. Присъедини се към листа на очакване и тестовата група ще те потърси първа.
+                    През контролиран разговор с обучен специалист ("дразнител"), получаваш безопасно пространство да изразиш потиснатите емоции. Процесът започва с контролирана конфронтация, за да отключи гнева, и завършва с техники за успокоение и емоционална яснота.
                 </p>
-                <ul class="space-y-3 text-gray-300 text-left">
+                <ul class="space-y-3 text-gray-300 text-left mb-8">
                     <li class="flex items-start" data-aos="fade-right" data-aos-delay="200">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                        <span class="text-sm md:text-base">Ранен достъп до пилотните сесии</span>
+                        <span class="text-sm md:text-base"><strong>Научно обосновано:</strong> Базирано на техники за емоционална регулация</span>
                     </li>
                     <li class="flex items-start" data-aos="fade-right" data-aos-delay="300">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                        <span class="text-sm md:text-base">Пълна анонимност и поверителност</span>
+                        <span class="text-sm md:text-base"><strong>100% анонимно:</strong> Без профили, без следи, пълна поверителност</span>
                     </li>
                     <li class="flex items-start" data-aos="fade-right" data-aos-delay="400">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                        <span class="text-sm md:text-base">Безопасна и контролирана среда</span>
+                        <span class="text-sm md:text-base"><strong>Достъпно 24/7:</strong> Когато имаш нужда, ние сме тук</span>
                     </li>
                     <li class="flex items-start" data-aos="fade-right" data-aos-delay="500">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                        <span class="text-sm md:text-base">Глас в оформянето на финалното изживяване</span>
+                        <span class="text-sm md:text-base"><strong>Без последствия:</strong> Безопасна среда без осъждане</span>
                     </li>
                 </ul>
             </div>
@@ -381,65 +394,94 @@
 
     <section id="how-it-works" class="bg-gray-800">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 md:mb-10 text-center" data-aos="fade-up">Как работи? В 3 лесни стъпки:</h2>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 md:mb-10 text-center" data-aos="fade-up">Как ще работи услугата?</h2>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
-                <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-right" data-aos-delay="100">
+                <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-right" data-aos-delay="100">
                       <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">1</div>
-                     <i class="fas fa-user-ninja feature-icon mt-6"></i>
-                     <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Избери "Дразнител"</h3>
-                     <p class="text-sm md:text-base text-gray-400">Посочи кой те е ядосал – шеф, партньор, приятел, непознат или друго.</p>
+                     <i class="fas fa-user-check feature-icon mt-6"></i>
+                     <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Моментален достъп</h3>
+                     <p class="text-sm md:text-base text-gray-400">Влизаш в платформата, избираш контекст (професионален, личен, общ) и се свързваш за секунди.</p>
                  </div>
-                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="200">
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-up" data-aos-delay="200">
                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">2</div>
-                      <i class="fas fa-phone-alt feature-icon mt-6"></i>
-                <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Влез в тестовите сесии</h3>
-                <p class="text-sm md:text-base text-gray-400">Щом стартира пилотната версия, ще получиш покана за анонимен VoIP разговор с нашия екип, за да изпиташ преживяването първи.</p>
+                      <i class="fas fa-comments feature-icon mt-6"></i>
+                      <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Контролиран диалог</h3>
+                      <p class="text-sm md:text-base text-gray-400">10-минутна сесия с обучен специалист, който води разговора от фрустрация към облекчение.</p>
                  </div>
-                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-left" data-aos-delay="300">
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center" data-aos="fade-left" data-aos-delay="300">
                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">3</div>
-                      <i class="fas fa-smile-beam feature-icon mt-6"></i>
-                <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Почувствай облекчение</h3>
-                <p class="text-sm md:text-base text-gray-400">Освободи се от напрежението и сподели обратна връзка, за да направим услугата още по-ефективна за всеки.</p>
+                      <i class="fas fa-heart feature-icon mt-6"></i>
+                      <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Емоционално равновесие</h3>
+                      <p class="text-sm md:text-base text-gray-400">Излизаш от разговора облекчен, с ясна глава и готов да продължиш напред.</p>
                  </div>
                  <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-gray-800 via-red-500 to-gray-800 transform -translate-y-1/2" style="z-index: 5;" data-aos="fade" data-aos-delay="400"></div>
             </div>
         </div>
     </section>
 
-      <section id="waitlist" class="bg-gradient-to-r from-red-600 to-orange-500 text-white">
-          <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center" data-aos="fade-up">Готов ли си за първата контролирана сесия?</h2>
-            <p class="text-base md:text-xl mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-left md:text-center" data-aos="fade-up" data-aos-delay="100">
-                Влез в листа на очакване и получи известие при старта, ексклузивни ресурси за управление на гнева и покана за пилотните VoIP разговори. Избери да бъдеш сред първите, които изпитват Доктор Гняв.
+     <section id="waitlist" class="bg-gradient-to-r from-red-600 to-orange-500 text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center" data-aos="fade-up">Бъди сред първите</h2>
+            <p class="text-base md:text-xl mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
+                Работим усилено да пуснем услугата скоро. Запиши имейла си и ще те уведомим веднага щом Доктор Гняв стане достъпен. Първите потребители ще получат специални условия.
             </p>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                <form class="waitlist-form max-w-xl mx-auto" novalidate>
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-2 bg-white/10 rounded-lg p-3 sm:p-2 border border-white/30">
-                        <input type="email" name="waitlist-email" required placeholder="Въведи своя имейл" class="w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Имейл за списъка на очакване">
-                        <button type="submit" class="bg-white text-red-600 text-base md:text-lg font-semibold px-4 py-3 rounded-md shadow-lg cta-button-hover hover:bg-gray-100">Присъедини се още сега</button>
-                    </div>
-                    <p class="waitlist-confirmation hidden text-lime-200 text-sm mt-3" role="status" aria-live="polite">Записът е отчетен! Очаквай първите новини директно в пощата си.</p>
-                </form>
-                <p class="text-xs text-red-100 mt-4" data-aos="fade-up" data-aos-delay="300">С изпращането на формата приемаш нашите <a href="#terms" class="underline hover:text-white font-semibold">Общи условия</a> и <a href="#privacy" class="underline hover:text-white font-semibold">Политика за поверителност</a>.</p>
+            <div class="text-center">
+                <div class="max-w-md mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <form id="waitlist-form-main" class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            type="email" 
+                            id="email-main"
+                            placeholder="твоят@имейл.bg" 
+                            required
+                            class="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:bg-white/20 focus:border-white focus:ring-2 focus:ring-white/50 transition"
+                        />
+                        <button 
+                            type="submit"
+                            class="bg-white text-red-600 text-base font-semibold py-3 px-6 rounded-lg shadow-lg cta-button-hover hover:bg-gray-100 whitespace-nowrap"
+                        >
+                            Присъедини се
+                        </button>
+                    </form>
+                    <p class="text-xs text-red-100 mt-4" data-aos="fade-up" data-aos-delay="300">🎁 Първите 100 регистрирали се получават 50% отстъпка за първата сесия</p>
+                </div>
+            </div>
+            <div class="mt-12 grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">500+</div>
+                    <div class="text-sm text-red-100">Заинтересовани потребители</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">Q1 2025</div>
+                    <div class="text-sm text-red-100">Очаквана дата на стартиране</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-sm text-red-100">Достъпност</div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="bg-gray-900 text-gray-400 py-8">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="mb-4 text-sm md:text-base">
-                <a href="#terms" class="hover:text-white px-2 md:px-3 py-1">Общи условия</a> |
-                <a href="#privacy" class="hover:text-white px-2 md:px-3 py-1">Политика за поверителност</a>
+            <div class="mb-4">
+                <a href="#" class="text-2xl font-bold text-white">Доктор <span class="text-red-500">Гняв</span></a>
             </div>
-            <p class="text-xs md:text-sm mb-2 leading-relaxed max-w-3xl mx-auto">
+            <p class="text-xs md:text-sm mb-4 leading-relaxed max-w-3xl mx-auto">
                 <strong class="text-red-500">Важно:</strong> Услугата "Доктор Гняв" е предназначена за емоционално освобождаване и не е заместител на професионална психотерапия или медицинска помощ. Ако изпитвате тежки психологически затруднения, моля, потърсете квалифициран специалист.
             </p>
+            <div class="mb-4 text-sm md:text-base">
+                <a href="#terms" class="hover:text-white px-2 md:px-3 py-1">Общи условия</a> |
+                <a href="#privacy" class="hover:text-white px-2 md:px-3 py-1">Политика за поверителност</a> |
+                <a href="mailto:contact@doctoranger.bg" class="hover:text-white px-2 md:px-3 py-1">Контакти</a>
+            </div>
             <p class="text-xs md:text-sm">&copy; 2025 Доктор Гняв. Всички права запазени.</p>
         </div>
     </footer>
 
     <div id="terms" class="hidden p-10 bg-white text-gray-800"><h2>Общи условия</h2><p>Детайли...</p></div>
     <div id="privacy" class="hidden p-10 bg-white text-gray-800"><h2>Политика за поверителност</h2><p>Детайли...</p></div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize AOS
@@ -481,18 +523,50 @@
             console.error("Infographic trigger container not found!");
         }
 
-        // Basic waitlist form handler for inline feedback
-        document.querySelectorAll('.waitlist-form').forEach(form => {
-            form.addEventListener('submit', event => {
-                event.preventDefault();
-                const confirmation = form.querySelector('.waitlist-confirmation');
-                if (confirmation) {
-                    confirmation.classList.remove('hidden');
-                    confirmation.classList.add('block');
-                }
-                form.reset();
-            });
-        });
+        // Waitlist Form Handling
+        function handleWaitlistForm(formId, emailId) {
+            const form = document.getElementById(formId);
+            const emailInput = document.getElementById(emailId);
+
+            if (form && emailInput) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = emailInput.value.trim();
+                    
+                    if (email) {
+                        // Here you would typically send to your backend/email service
+                        // For now, we'll just show a success message
+                        
+                        // Store in localStorage (temporary solution)
+                        let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+                        if (!waitlist.includes(email)) {
+                            waitlist.push(email);
+                            localStorage.setItem('waitlist', JSON.stringify(waitlist));
+                        }
+                        
+                        // Show success message
+                        const submitButton = form.querySelector('button[type="submit"]');
+                        const originalText = submitButton.textContent;
+                        submitButton.textContent = '✓ Записан!';
+                        submitButton.disabled = true;
+                        emailInput.value = '';
+                        
+                        setTimeout(() => {
+                            submitButton.textContent = originalText;
+                            submitButton.disabled = false;
+                        }, 3000);
+                        
+                        // Optional: Send to analytics or backend
+                        console.log('Waitlist signup:', email);
+                    }
+                });
+            }
+        }
+
+        // Initialize both forms
+        handleWaitlistForm('waitlist-form-hero', 'email-hero');
+        handleWaitlistForm('waitlist-form-main', 'email-main');
 
     </script>
 
