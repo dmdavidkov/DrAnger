@@ -26,7 +26,7 @@ A modern, interactive landing page for "Доктор Гняв" (Doctor Anger) - 
 
 ## Live Demo
 
-Visit the live site: [Your GitHub Pages URL will be here]
+Visit the live site: [Link](https://dmdavidkov.github.io/DrAnger/)
 
 ## Local Development
 
