@@ -223,6 +223,20 @@
             overflow-x: hidden;
         }
 
+        /* Prevent AOS from adding overflow to sections */
+        section[data-aos] {
+            overflow: visible !important;
+        }
+        
+        /* Ensure waitlist section never has scrollbar */
+        #waitlist {
+            overflow: visible !important;
+        }
+        
+        #waitlist * {
+            overflow: visible !important;
+        }
+
     </style>
 </head>
 <body class="antialiased">
