@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доктор Гняв - Освободи гнева си безопасно</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background */
+            color: #e5e7eb; /* Light text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .gradient-accent {
+            background: linear-gradient(to right, #ef4444, #f97316); /* Red to Orange gradient */
+        }
+        .gradient-accent-hover:hover {
+            background: linear-gradient(to right, #dc2626, #ea580c); /* Darker gradient on hover */
+        }
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        section {
+            padding: 6rem 1rem; /* Vertical padding for sections */
+        }
+        @media (min-width: 768px) {
+            section {
+                padding: 8rem 2rem; /* Larger padding on medium screens and up */
+            }
+        }
+        .feature-icon {
+            font-size: 2.5rem; /* Icon size */
+            margin-bottom: 1rem;
+            color: #f97316; /* Orange icon color */
+            transition: transform 0.3s ease-in-out;
+        }
+        .group:hover .feature-icon {
+             transform: scale(1.1) rotate(-5deg); /* Icon animation on hover */
+        }
+        .hover-lift {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+        }
+        .cta-button-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .cta-button-hover:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.5); /* Glow effect on hover */
+        }
+
+        /* --- Circular Infographic Styles --- */
+        .circular-infographic-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem 0;
+            min-height: 300px; /* Ensure space for the SVG */
+            position: relative; /* For absolute positioning of SVG */
+        }
+        .circular-infographic-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; /* Responsive width */
+            max-width: 350px; /* Max width */
+            height: auto;
+            overflow: visible; /* Allow flow dot to potentially exceed viewBox slightly */
+        }
+
+        /* --- Infographic Animation Styles --- */
+        .infographic-node,
+        .infographic-circle-arc {
+            opacity: 0; /* Start hidden */
+            will-change: opacity, stroke-dashoffset, transform; /* Optimize animations */
+            transform-origin: center center; /* Set origin for transforms */
+        }
+        .infographic-node .pulsating-content {
+             transform-origin: center center;
+             transition: transform 0.3s ease; /* Add transition for hover */
+        }
+        /* Scale inner group on hover */
+        .infographic-node:hover .pulsating-content {
+             transform: scale(1.05);
+        }
+        .infographic-node circle {
+            transition: filter 0.3s ease;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); /* Initial shadow */
+        }
+        .infographic-node:hover circle {
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.3)); /* Increased shadow on hover */
+        }
+        .infographic-node .node-icon {
+            font-family: "Font Awesome 6 Free"; /* Specify Font Awesome */
+            font-weight: 900; /* Use solid style */
+            font-size: 28px; /* Icon size */
+            fill: #ffffff; /* White icon color */
+            text-anchor: middle; /* Center horizontally */
+            dominant-baseline: central; /* Center vertically */
+            pointer-events: none; /* Prevent icon from blocking hover on circle */
+            display: inline-block; /* Needed for vertical alignment sometimes */
+        }
+
+        .infographic-circle-arc path {
+            fill: none; /* No fill for arcs */
+            stroke-width: 5; /* Stroke thickness */
+            stroke-linecap: round; /* Rounded ends */
+            /* Set dasharray based on approximate arc length (~209) for drawing effect */
+            stroke-dasharray: 209;
+            stroke-dashoffset: 209; /* Start fully offset (invisible) */
+            stroke-opacity: 1;
+        }
+        /* Apply gradients to arcs */
+        #circle-arc-red path { stroke: url(#redToOrangeGradient); }
+        #circle-arc-orange path { stroke: url(#orangeToGreenGradient); }
+        #circle-arc-green path { stroke: url(#greenToRedGradient); }
+
+        /* --- Keyframes --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes draw-arc {
+            to { stroke-dashoffset: 0; } /* Animate to fully drawn */
+        }
+        /* Removed flow-circle keyframes */
+
+        /* --- Sequential Animations Applied *Only When Visible* --- */
+        /* Step 1: Anger Node appears */
+        .infographic-trigger-container.is-visible #node-anger {
+            animation: fadeIn 1.2s ease-out 0s forwards;
+        }
+        /* Step 2: Call Node appears */
+        .infographic-trigger-container.is-visible #node-call {
+            animation: fadeIn 1.2s ease-out 0.8s forwards;
+        }
+        /* Step 3: Calm Node appears */
+         .infographic-trigger-container.is-visible #node-calm {
+            animation: fadeIn 1.2s ease-out 1.6s forwards;
+        }
+
+        /* Step 4: Draw arcs sequentially */
+        /* Red Arc */
+        .infographic-trigger-container.is-visible #circle-arc-red {
+             animation: fadeIn 0.1s ease-out 2.3s forwards; /* Ends 2.4s */
+        }
+         .infographic-trigger-container.is-visible #circle-arc-red path {
+             /* Draw first (0.5s) */
+             animation: draw-arc 0.5s ease-out 2.4s forwards; /* Ends 2.9s */
+         }
+        /* Orange Arc */
+        .infographic-trigger-container.is-visible #circle-arc-orange {
+             /* Start fadeIn 0.2s after red draw ends (2.9s + 0.2s = 3.1s) */
+             animation: fadeIn 0.1s ease-out 3.1s forwards; /* Ends 3.2s */
+        }
+         .infographic-trigger-container.is-visible #circle-arc-orange path {
+             /* Start draw after orange fadeIn ends (3.2s) */
+             animation: draw-arc 0.5s ease-out 3.2s forwards; /* Ends 3.7s */
+         }
+        /* Green Arc */
+        .infographic-trigger-container.is-visible #circle-arc-green {
+             /* Start fadeIn 0.2s after orange draw ends (3.7s + 0.2s = 3.9s) */
+             animation: fadeIn 0.1s ease-out 3.9s forwards; /* Ends 4.0s */
+        }
+         .infographic-trigger-container.is-visible #circle-arc-green path {
+             /* Start draw after green fadeIn ends (4.0s) */
+             animation: draw-arc 0.5s ease-out 4.0s forwards; /* Ends 4.5s */
+         }
+
+         /* Flow Dot is initially hidden via opacity in SVG */
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-white">Доктор <span class="text-red-500">Гняв</span></a>
+                </div>
+                <div>
+                    <a href="#call-section" class="gradient-accent text-white font-semibold py-2 px-5 rounded-lg shadow-md transition duration-300 ease-in-out gradient-accent-hover cta-button-hover">
+                        Обади се сега
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="bg-gray-900 text-center pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight" data-aos="fade-down" data-aos-duration="800">
+                Излей <span class="text-red-500">гнева</span> си. Безопасно. Анонимно.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                "Доктор Гняв" е твоят моментален емоционален отдушник. Проведи контролиран разговор с обучен "дразнител" и освободи натрупаното напрежение без последствия.
+            </p>
+            <a href="#call-section" class="gradient-accent text-white text-lg font-semibold py-3 px-8 rounded-lg shadow-lg inline-block cta-button-hover" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="600">
+                Започни разговор (10 мин / 20 лв)
+            </a>
+            <p class="text-xs text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">Услугата е анонимна и поверителна.</p>
+        </div>
+    </section>
+
+    <section id="problem" class="bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up">Напрежението те задушава?</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Всекидневието ни залива със стрес – от шефа, трафика, връзките, живота. Потиснатият гняв води до тревожност, избухливост и бърнаут. Често няма бърз и достъпен начин да се справим.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-right" data-aos-delay="200">
+                    <i class="fas fa-briefcase feature-icon text-red-500"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Стрес на работното място</h3>
+                    <p class="text-gray-400">Неразбран шеф, токсични колеги, непосилни задачи?</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-users feature-icon text-red-500"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Конфликти във връзките</h3>
+                    <p class="text-gray-400">Неразбирателство с партньор, семейство или приятели?</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-left" data-aos-delay="400">
+                    <i class="fas fa-bolt feature-icon text-red-500"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Ежедневно напрежение</h3>
+                    <p class="text-gray-400">Разочарования, задръствания, несправедливост – всичко се натрупва.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
+                <span class="text-sm font-semibold text-red-500 uppercase tracking-wider">Решението</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Представяме ти Доктор Гняв</h2>
+                <p class="text-lg text-gray-300 mb-4">
+                    Уникална услуга, създадена да ти помогне да изпуснеш парата по контролиран и здравословен начин. Ние не сме терапия, а твоят личен, анонимен "вентил" за гняв.
+                </p>
+                <p class="text-lg text-gray-300 mb-6">
+                    Чрез симулиран разговор с наш обучен специалист ("дразнител"), ти получаваш безопасно пространство да изразиш всичко, което те тормози. Разговорът започва с лека провокация, за да отключи емоциите, след което те водим към успокоение и яснота.
+                </p>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-check-circle text-green-500 mr-3"></i> Моментално облекчение</li>
+                    <li class="flex items-center" data-aos="fade-right" data-aos-delay="200"><i class="fas fa-check-circle text-green-500 mr-3"></i> Пълна анонимност и поверителност</li>
+                    <li class="flex items-center" data-aos="fade-right" data-aos-delay="300"><i class="fas fa-check-circle text-green-500 mr-3"></i> Безопасна и контролирана среда</li>
+                    <li class="flex items-center" data-aos="fade-right" data-aos-delay="400"><i class="fas fa-check-circle text-green-500 mr-3"></i> Без осъждане и последствия</li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 w-full" data-aos="fade-left" data-aos-delay="200">
+                 <div class="circular-infographic-container infographic-trigger-container">
+                     <svg viewBox="0 0 300 300" class="circular-infographic-svg" preserveAspectRatio="xMidYMid meet" aria-labelledby="infographicTitle infographicDesc">
+                         <title id="infographicTitle">Процес на Доктор Гняв</title>
+                         <desc id="infographicDesc">Анимирана инфографика показваща 3 стъпки: Гняв/Стрес (икона термометър), Разговор (икона телефон), Облекчение (икона усмихнато лице). След това се изчертава кръг около тях с градиент от червено към оранжево, оранжево към зелено и зелено към червено. Накрая точка променя цвета си докато се движи по начертания кръг.</desc>
+
+                         <defs>
+                             <linearGradient id="redToOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                 <stop offset="0%" stop-color="#ef4444"/> <stop offset="60%" stop-color="#ef4444"/> <stop offset="100%" stop-color="#f97316"/> </linearGradient>
+                             <linearGradient id="orangeToGreenGradient" x1="100%" y1="100%" x2="0%" y2="100%">
+                                 <stop offset="0%" stop-color="#f97316"/> <stop offset="60%" stop-color="#f97316"/> <stop offset="100%" stop-color="#22c55e"/> </linearGradient>
+                              <linearGradient id="greenToRedGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                                 <stop offset="0%" stop-color="#22c55e"/> <stop offset="60%" stop-color="#22c55e"/> <stop offset="100%" stop-color="#ef4444"/> </linearGradient>
+
+                             <path id="flow-path" d="M 150 50 A 100 100 0 0 1 236.6 200 A 100 100 0 0 1 63.4 200 A 100 100 0 0 1 150 50" fill="none" stroke="transparent"/>
+                         </defs>
+
+                         <g class="infographic-circle-arc" id="circle-arc-red">
+                             <path d="M 150 50 A 100 100 0 0 1 236.6 200" />
+                         </g>
+                         <g class="infographic-circle-arc" id="circle-arc-orange">
+                              <path d="M 236.6 200 A 100 100 0 0 1 63.4 200" />
+                          </g>
+                          <g class="infographic-circle-arc" id="circle-arc-green">
+                             <path d="M 63.4 200 A 100 100 0 0 1 150 50" />
+                          </g>
+
+                         <circle id="flow-dot" r="6" fill="#22c55e" opacity="0" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.4))">
+                             <animate attributeName="opacity" from="0" to="1" begin="flow-dot-start.begin" dur="0.2s" fill="freeze"/>
+
+                             <animateMotion id="flow-dot-start" dur="5s" begin="4.5s" repeatCount="indefinite" rotate="auto">
+                                 <mpath xlink:href="#flow-path"/>
+                             </animateMotion>
+
+                             <animate attributeName="fill" to="#ef4444" dur="0.01s" begin="flow-dot-start.begin;flow-dot-start.repeat" fill="freeze" />
+                             <animate attributeName="fill" to="#f97316" dur="0.01s" begin="flow-dot-start.begin + 1.7s;flow-dot-start.repeat + 1.7s" fill="freeze" />
+                             <animate attributeName="fill" to="#22c55e" dur="0.01s" begin="flow-dot-start.begin + 3.4s;flow-dot-start.repeat + 3.4s" fill="freeze" />
+                         </circle>
+
+                         <g class="infographic-node" id="node-anger" transform="translate(150, 50)">
+                             <g class="pulsating-content">
+                                 <circle r="35" fill="#ef4444"/>
+                                 <text class="node-icon" y="2">&#xf2c9;</text> </g>
+                         </g>
+                         <g class="infographic-node" id="node-call" transform="translate(236.6, 200)">
+                              <g class="pulsating-content">
+                                 <circle r="35" fill="#f97316"/>
+                                 <text class="node-icon" y="2">&#xf879;</text> </g>
+                         </g>
+                         <g class="infographic-node" id="node-calm" transform="translate(63.4, 200)">
+                              <g class="pulsating-content">
+                                 <circle r="35" fill="#22c55e"/>
+                                 <text class="node-icon" y="2">&#xf5b8;</text> </g>
+                         </g>
+                     </svg>
+                  </div>
+            </div>
+            </div>
+    </section>
+
+    <section id="how-it-works" class="bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10" data-aos="fade-up">Как работи? В 3 лесни стъпки:</h2>
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="zoom-in" data-aos-delay="100">
+                      <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">1</div>
+                     <i class="fas fa-user-ninja feature-icon mt-6"></i>
+                     <h3 class="text-xl font-semibold text-white mb-2">Избери "Дразнител"</h3>
+                     <p class="text-gray-400">Посочи кой те е ядосал – шеф, партньор, приятел, непознат или друго.</p>
+                 </div>
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="zoom-in" data-aos-delay="200">
+                       <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">2</div>
+                      <i class="fas fa-phone-alt feature-icon mt-6"></i>
+                      <h3 class="text-xl font-semibold text-white mb-2">Проведи разговора</h3>
+                      <p class="text-gray-400">Анонимен 10-минутен разговор (VoIP). Излей всичко – първо конфронтация, после успокоение.</p>
+                 </div>
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="zoom-in" data-aos-delay="300">
+                       <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">3</div>
+                      <i class="fas fa-smile-beam feature-icon mt-6"></i>
+                      <h3 class="text-xl font-semibold text-white mb-2">Почувствай облекчение</h3>
+                      <p class="text-gray-400">Освободи се от напрежението и продължи деня си по-спокоен и с ясна глава.</p>
+                 </div>
+                 <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-gray-800 via-red-500 to-gray-800 transform -translate-y-1/2" style="z-index: 5;" data-aos="zoom-in" data-aos-delay="400"></div>
+            </div>
+        </div>
+    </section>
+
+     <section id="call-section" class="bg-gradient-to-r from-red-600 to-orange-500 text-white"> <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">Готов ли си да освободиш гнева?</h2>
+            <p class="text-lg md:text-xl mb-8" data-aos="fade-up" data-aos-delay="100">
+                Направи първата крачка към емоционално облекчение. Само за 20 лв получаваш 10 минути анонимен разговор, който може да промени деня ти.
+            </p>
+            <a href="#payment-placeholder" class="bg-white text-red-600 text-lg font-semibold py-3 px-8 rounded-lg shadow-lg inline-block cta-button-hover hover:bg-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                Обади се на Доктор Гняв сега!
+            </a>
+             <p class="text-xs text-red-100 mt-4" data-aos="fade-up" data-aos-delay="300">Натискайки бутона, се съгласяваш с нашите <a href="#terms" class="underline hover:text-white font-semibold">Общи условия</a>.</p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="#terms" class="hover:text-white px-3 py-1">Общи условия</a> |
+                <a href="#privacy" class="hover:text-white px-3 py-1">Политика за поверителност</a>
+            </div>
+            <p class="text-sm mb-2">
+                <strong class="text-red-500">Важно:</strong> Услугата "Доктор Гняв" е предназначена за емоционално освобождаване и не е заместител на професионална психотерапия или медицинска помощ. Ако изпитвате тежки психологически затруднения, моля, потърсете квалифициран специалист.
+            </p>
+            <p class="text-sm">&copy; 2025 Доктор Гняв. Всички права запазени.</p>
+        </div>
+    </footer>
+
+    <div id="terms" class="hidden p-10 bg-white text-gray-800"><h2>Общи условия</h2><p>Детайли...</p></div>
+    <div id="privacy" class="hidden p-10 bg-white text-gray-800"><h2>Политика за поверителност</h2><p>Детайли...</p></div>
+    <div id="payment-placeholder" class="hidden">Тук ще бъде интегриран начин за плащане и стартиране на VoIP разговор.</div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true, // Whether animation should happen only once - while scrolling down
+            duration: 600, // values from 0 to 3000, with step 50ms
+            easing: 'ease-in-out', // default easing for AOS animations
+        });
+
+        // Intersection Observer for Infographic Animation Trigger
+        const infographicContainer = document.querySelector('.infographic-trigger-container');
+
+        if (infographicContainer) {
+            const observerOptions = {
+                root: null, // relative to document viewport
+                rootMargin: '0px', // margin around root. Values are similar to css property. Unitless values not allowed
+                threshold: 0.2 // percentage of target's visibility the observer's callback should be executed
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    // When the element is 20% visible
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible'); // Add class to trigger CSS animations for nodes/arcs
+
+                        observer.unobserve(entry.target); // Stop observing once triggered
+                    }
+                });
+            };
+
+            // Create and start the observer
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            observer.observe(infographicContainer);
+
+        } else {
+            console.error("Infographic trigger container not found!");
+        }
+
+    </script>
+
+</body>
+</html>
