@@ -417,37 +417,38 @@
     </section>
 
      <section id="waitlist" class="bg-gradient-to-br from-red-600 via-red-500 to-orange-500 text-white relative overflow-hidden">
-        <!-- Elegant background overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+        <!-- Subtle radial overlay for depth -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-black/5 to-black/20"></div>
         
         <div class="max-w-3xl mx-auto px-4 relative z-10">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center drop-shadow-lg" data-aos="fade-up">Бъди сред първите</h2>
-            <p class="text-base md:text-lg mb-3 leading-relaxed max-w-2xl mx-auto text-center drop-shadow-md" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 text-center" data-aos="fade-up" style="text-shadow: 0 2px 20px rgba(0,0,0,0.2);">Бъди сред първите</h2>
+            <p class="text-lg md:text-xl mb-2 leading-relaxed max-w-2xl mx-auto text-center font-medium" data-aos="fade-up" data-aos-delay="100" style="text-shadow: 0 1px 10px rgba(0,0,0,0.15);">
                 Работим усилено да пуснем услугата скоро. Запиши имейла си и ще те уведомим веднага щом Доктор Гняв стане достъпен.
             </p>
-            <p class="text-sm md:text-base mb-10 leading-relaxed max-w-xl mx-auto text-center opacity-95 drop-shadow-md" data-aos="fade-up" data-aos-delay="150">
+            <p class="text-base md:text-lg mb-12 leading-relaxed max-w-xl mx-auto text-center opacity-90" data-aos="fade-up" data-aos-delay="150" style="text-shadow: 0 1px 10px rgba(0,0,0,0.15);">
                 Първите потребители ще получат специални условия.
             </p>
             <div class="text-center">
-                <div class="max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    <form id="waitlist-form-main" class="flex flex-col sm:flex-row gap-3 mb-5">
+                <div class="max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <form id="waitlist-form-main" class="flex flex-col sm:flex-row gap-4 mb-6">
                         <input 
                             type="email" 
                             id="email-main"
                             placeholder="твоят@имейл.bg" 
                             required
-                            class="flex-1 px-5 py-4 rounded-xl bg-white/95 backdrop-blur-md border-0 text-gray-900 placeholder-gray-500 shadow-xl focus:outline-none focus:ring-4 focus:ring-white/40 focus:shadow-2xl transition-all duration-300 font-medium"
+                            class="flex-1 px-6 py-4 rounded-xl bg-white text-gray-900 placeholder-gray-400 shadow-[0_8px_30px_rgba(0,0,0,0.3)] focus:outline-none focus:ring-4 focus:ring-white/50 focus:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-300 text-base font-medium"
                         />
                         <button 
                             type="submit"
-                            class="bg-gray-900 text-white text-base font-bold py-4 px-8 rounded-xl shadow-2xl hover:bg-gray-800 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 whitespace-nowrap"
+                            class="bg-gray-900 text-white text-base font-bold py-4 px-10 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:bg-black hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 whitespace-nowrap"
                         >
                             Присъедини се
                         </button>
                     </form>
-                    <div class="inline-block bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-md rounded-xl px-5 py-3 border border-yellow-400/30 shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                        <p class="text-sm md:text-base text-white font-semibold drop-shadow">
-                            <span class="text-yellow-300">🎁</span> Първите 100 регистрирали се получават <span class="text-yellow-300 font-bold">50% отстъпка</span> за първата такса
+                    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-6 py-3.5 shadow-lg border border-white/20" data-aos="fade-up" data-aos-delay="300">
+                        <span class="text-2xl">🎁</span>
+                        <p class="text-sm md:text-base font-semibold" style="text-shadow: 0 1px 5px rgba(0,0,0,0.2);">
+                            Първите 100 получават <span class="text-yellow-300 font-extrabold">50% отстъпка</span>
                         </p>
                     </div>
                 </div>
