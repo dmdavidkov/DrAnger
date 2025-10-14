@@ -404,15 +404,15 @@
 
      <section id="waitlist" class="bg-gradient-to-r from-red-600 to-orange-500 text-white">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center" data-aos="fade-up">Бъди сред първите</h2>
-            <p class="text-lg md:text-xl mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center" data-aos="fade-up" data-aos-offset="50">Бъди сред първите</h2>
+            <p class="text-lg md:text-xl mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-center" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50">
                 Работим усилено да пуснем услугата скоро. Запиши имейла си и ще те уведомим веднага щом Доктор Гняв стане достъпен.
             </p>
-            <p class="text-base md:text-lg mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-center text-white/90" data-aos="fade-up" data-aos-delay="150">
+            <p class="text-base md:text-lg mb-8 leading-relaxed md:max-w-2xl md:mx-auto text-center text-white/90" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50">
                 Първите потребители ще получат специални условия.
             </p>
             <div class="text-center">
-                <div class="max-w-md mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="max-w-md mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-offset="50">
                     <form id="waitlist-form-main" class="flex flex-col sm:flex-row gap-3">
                         <input 
                             type="email" 
@@ -428,7 +428,7 @@
                             Присъедини се
                         </button>
                     </form>
-                    <p class="text-sm text-white/90 mt-4" data-aos="fade-up" data-aos-delay="300">🎁 Първите 100 регистрирали се получават 50% отстъпка за първата такса</p>
+                    <p class="text-sm text-white/90 mt-4" data-aos="fade-up" data-aos-delay="300" data-aos-offset="50">🎁 Първите 100 регистрирали се получават 50% отстъпка за първата такса</p>
                 </div>
             </div>
         </div>
@@ -461,9 +461,10 @@
             once: true, // Whether animation should happen only once - while scrolling down
             duration: 700, // Smooth, professional duration
             easing: 'ease-out-cubic', // Smooth cubic easing
-            offset: 100, // Trigger when element is 100px from viewport
+            offset: 120, // Trigger when element is 120px from viewport
             delay: 0, // No base delay
             disable: false, // Enable on all devices
+            anchorPlacement: 'top-bottom', // Trigger animation when top of element hits bottom of viewport
         });
 
         // Intersection Observer for Infographic Animation Trigger
