@@ -268,7 +268,7 @@
                 <a href="#waitlist" class="gradient-accent text-white text-base md:text-lg font-semibold py-3 px-8 rounded-lg shadow-lg inline-block cta-button-hover">
                     Искам достъп
                 </a>
-                <p class="text-sm text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="400">Бъди сред първите, който ще опитат Доктор Гняв</p>
+                <p class="text-sm text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="400">Бъди сред първите</p>
             </div>
         </div>
     </section>
@@ -541,7 +541,7 @@
                         const submitButton = form.querySelector('button[type="submit"]');
                         emailInput.disabled = true;
                         emailInput.classList.add('opacity-60', 'cursor-not-allowed');
-                        submitButton.textContent = '✓ Записан';
+                        submitButton.innerHTML = '<span style="color: #22c55e;">✓</span> Записан';
                         submitButton.disabled = true;
                         submitButton.classList.add('opacity-90', 'cursor-not-allowed');
                         
