@@ -11,11 +11,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box; /* Include padding and border in element's total width */
+        }
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling */
+            overflow-x: hidden; /* Prevent horizontal scroll on html */
+            width: 100%;
+            position: relative;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #111827; /* Dark background */
             color: #e5e7eb; /* Light text */
             overflow-x: hidden; /* Prevent horizontal scroll */
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
         }
         .gradient-accent {
             background: linear-gradient(to right, #ef4444, #f97316); /* Red to Orange gradient */
@@ -23,11 +36,12 @@
         .gradient-accent-hover:hover {
             background: linear-gradient(to right, #dc2626, #ea580c); /* Darker gradient on hover */
         }
-        html {
-            scroll-behavior: smooth; /* Smooth scrolling */
-        }
         section {
             padding: 4rem 1rem; /* Reduced padding for mobile */
+            width: 100%;
+            max-width: 100vw; /* Never exceed viewport width */
+            overflow-x: hidden; /* Prevent overflow */
+            position: relative;
         }
         @media (min-width: 768px) {
             section {
@@ -70,10 +84,12 @@
             justify-content: center;
             align-items: center;
             width: 100%;
+            max-width: 100%; /* Prevent overflow */
             margin: 2rem auto; /* Better spacing on mobile */
             padding: 1rem 0;
             min-height: 280px; /* Smaller for mobile */
             position: relative; /* For absolute positioning of SVG */
+            overflow: hidden; /* Clip any overflow */
         }
         @media (min-width: 768px) {
             .circular-infographic-container {
@@ -86,7 +102,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 85%; /* Better mobile sizing */
+            width: 80%; /* Safer mobile sizing to avoid overflow */
             max-width: 350px; /* Max width */
             height: auto;
             overflow: visible; /* Allow flow dot to potentially exceed viewBox slightly */
@@ -195,6 +211,18 @@
 
          /* Flow Dot is initially hidden via opacity in SVG */
 
+        /* Utility classes to prevent overflow */
+        .no-overflow {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+        /* Ensure all direct children of body don't cause overflow */
+        body > * {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -214,12 +242,12 @@
         </div>
     </nav>
 
-    <section id="hero" class="bg-gray-900 text-center pt-20 pb-16 md:pt-32 md:pb-28 overflow-hidden">
+    <section id="hero" class="bg-gray-900 text-left md:text-center pt-20 pb-16 md:pt-32 md:pb-28 overflow-hidden">
         <div class="max-w-4xl mx-auto px-4">
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 leading-tight" data-aos="fade-down" data-aos-duration="600">
                 Излей <span class="text-red-500">гнева</span> си. Безопасно. Анонимно.
             </h1>
-            <p class="text-base md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
+            <p class="text-base md:text-xl text-gray-300 mb-8 md:max-w-2xl md:mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
                 "Доктор Гняв" е твоят моментален емоционален отдушник. Проведи контролиран разговор с обучен "дразнител" и освободи натрупаното напрежение без последствия.
             </p>
             <a href="#call-section" class="gradient-accent text-white text-base md:text-lg font-semibold py-3 px-6 md:px-8 rounded-lg shadow-lg inline-block cta-button-hover" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="400">
@@ -230,23 +258,23 @@
     </section>
 
     <section id="problem" class="bg-gray-800">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="max-w-6xl mx-auto px-4 text-left md:text-center">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up" data-aos-duration="500">Напрежението те задушава?</h2>
-            <p class="text-base md:text-lg text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+            <p class="text-base md:text-lg text-gray-300 mb-10 md:max-w-3xl md:mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
                 Всекидневието ни залива със стрес – от шефа, трафика, връзките, живота. Потиснатият гняв води до тревожност, избухливост и бърнаут. Често няма бърз и достъпен начин да се справим.
             </p>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center md:text-left" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
                     <i class="fas fa-briefcase feature-icon text-red-500"></i>
                     <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Стрес на работното място</h3>
                     <p class="text-sm md:text-base text-gray-400">Неразбран шеф, токсични колеги, непосилни задачи?</p>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center md:text-left" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
                     <i class="fas fa-users feature-icon text-red-500"></i>
                     <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Конфликти във връзките</h3>
                     <p class="text-sm md:text-base text-gray-400">Неразбирателство с партньор, семейство или приятели?</p>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-center md:text-left" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">
                     <i class="fas fa-bolt feature-icon text-red-500"></i>
                     <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Ежедневно напрежение</h3>
                     <p class="text-sm md:text-base text-gray-400">Разочарования, задръствания, несправедливост – всичко се натрупва.</p>
@@ -257,7 +285,7 @@
 
     <section id="solution" class="bg-gray-900">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right" data-aos-duration="500">
+            <div class="md:w-1/2 text-left" data-aos="fade-right" data-aos-duration="500">
                 <span class="text-xs md:text-sm font-semibold text-red-500 uppercase tracking-wider">Решението</span>
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4 md:mb-6">Представяме ти Доктор Гняв</h2>
                 <p class="text-base md:text-lg text-gray-300 mb-3 md:mb-4 leading-relaxed">
@@ -266,7 +294,7 @@
                 <p class="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
                     Чрез симулиран разговор с наш обучен специалист ("дразнител"), ти получаваш безопасно пространство да изразиш всичко, което те тормози. Разговорът започва с лека провокация, за да отключи емоциите, след което те водим към успокоение и яснота.
                 </p>
-                <ul class="space-y-3 text-gray-300 inline-block text-left">
+                <ul class="space-y-3 text-gray-300 text-left">
                     <li class="flex items-start" data-aos="fade-up" data-aos-delay="50" data-aos-duration="400">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
                         <span class="text-sm md:text-base">Моментално облекчение</span>
@@ -346,22 +374,22 @@
     </section>
 
     <section id="how-it-works" class="bg-gray-800">
-        <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="max-w-4xl mx-auto px-4 text-left md:text-center">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 md:mb-10" data-aos="fade-up" data-aos-duration="500">Как работи? В 3 лесни стъпки:</h2>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8 relative">
-                <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
                       <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">1</div>
                      <i class="fas fa-user-ninja feature-icon mt-6"></i>
                      <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Избери "Дразнител"</h3>
                      <p class="text-sm md:text-base text-gray-400">Посочи кой те е ядосал – шеф, партньор, приятел, непознат или друго.</p>
                  </div>
-                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">2</div>
                       <i class="fas fa-phone-alt feature-icon mt-6"></i>
                       <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Проведи разговора</h3>
                       <p class="text-sm md:text-base text-gray-400">Анонимен 10-минутен разговор (VoIP). Излей всичко – първо конфронтация, после успокоение.</p>
                  </div>
-                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                 <div class="relative z-10 bg-gray-700 p-6 rounded-lg shadow-lg group hover-lift text-left" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl shadow-md">3</div>
                       <i class="fas fa-smile-beam feature-icon mt-6"></i>
                       <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Почувствай облекчение</h3>
@@ -372,9 +400,9 @@
         </div>
     </section>
 
-     <section id="call-section" class="bg-gradient-to-r from-red-600 to-orange-500 text-white"> <div class="max-w-4xl mx-auto px-4 text-center">
+     <section id="call-section" class="bg-gradient-to-r from-red-600 to-orange-500 text-white"> <div class="max-w-4xl mx-auto px-4 text-left md:text-center">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up" data-aos-duration="500">Готов ли си да освободиш гнева?</h2>
-            <p class="text-base md:text-xl mb-8 leading-relaxed max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+            <p class="text-base md:text-xl mb-8 leading-relaxed md:max-w-2xl md:mx-auto" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
                 Направи първата крачка към емоционално облекчение. Само за 20 лв получаваш 10 минути анонимен разговор, който може да промени деня ти.
             </p>
             <a href="#payment-placeholder" class="bg-white text-red-600 text-base md:text-lg font-semibold py-3 px-6 md:px-8 rounded-lg shadow-lg inline-block cta-button-hover hover:bg-gray-100" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="400">
@@ -385,12 +413,12 @@
     </section>
 
     <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="max-w-6xl mx-auto px-4 text-left md:text-center">
             <div class="mb-4 text-sm md:text-base">
                 <a href="#terms" class="hover:text-white px-2 md:px-3 py-1">Общи условия</a> |
                 <a href="#privacy" class="hover:text-white px-2 md:px-3 py-1">Политика за поверителност</a>
             </div>
-            <p class="text-xs md:text-sm mb-2 leading-relaxed max-w-3xl mx-auto">
+            <p class="text-xs md:text-sm mb-2 leading-relaxed md:max-w-3xl md:mx-auto">
                 <strong class="text-red-500">Важно:</strong> Услугата "Доктор Гняв" е предназначена за емоционално освобождаване и не е заместител на професионална психотерапия или медицинска помощ. Ако изпитвате тежки психологически затруднения, моля, потърсете квалифициран специалист.
             </p>
             <p class="text-xs md:text-sm">&copy; 2025 Доктор Гняв. Всички права запазени.</p>
